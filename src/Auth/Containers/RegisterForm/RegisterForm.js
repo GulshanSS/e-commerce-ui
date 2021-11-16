@@ -6,8 +6,8 @@ import { Col, Container, Row, Form, Button } from "react-bootstrap";
 const RegisterForm = () => {
   return (
     <>
-      <Container className="my-3">
-        <h3>Registration Form</h3>
+      <Container className="my-5">
+        <h3 className="text-center">Registration Form</h3>
         <Form>
           <Row>
             <Col sm="12" md="6">

@@ -5,7 +5,7 @@ import { Col, Container, Row, Form, Button } from "react-bootstrap";
 const LoginForm = () => {
   return (
     <>
-      <Container className="my-3">
+      <Container className="my-5">
         <h3 className="text-center">Login Form</h3>
         <Form>
           <Row className="d-flex justify-content-center align-items-center">
