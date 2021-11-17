@@ -6,7 +6,7 @@ import { Col, Container, Row, Form, Button } from "react-bootstrap";
 const RegisterForm = () => {
   return (
     <>
-      <Container className="my-5">
+      <Container>
         <h3 className="text-center">Registration Form</h3>
         <Form>
           <Row>
@@ -66,13 +66,6 @@ const RegisterForm = () => {
                   inline
                   className="ml-3"
                   label="Female"
-                  type="radio"
-                  name="gendergroup"
-                />
-                <Form.Check
-                  inline
-                  className="ml-3"
-                  label="Other"
                   type="radio"
                   name="gendergroup"
                 />

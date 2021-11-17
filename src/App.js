@@ -11,8 +11,8 @@ import {
 import "./App.css";
 import { BiSearchAlt } from "react-icons/bi";
 
-import RegisterForm from "./Auth/Containers/RegisterForm/RegisterForm";
-import LoginForm from "./Auth/Containers/LoginForm/LoginForm";
+import RegisterPage from "./Auth/Containers/RegisterPage/RegisterPage";
+import LoginPage from "./Auth/Containers/LoginPage/LoginPage";
 
 const App = () => {
   return (
@@ -46,8 +46,8 @@ const App = () => {
             </Container>
           </Navbar>
           <Routes>
-            <Route path="/login" element={<LoginForm />} />
-            <Route path="/register" element={<RegisterForm />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
           </Routes>
         </div>
       </Router>
