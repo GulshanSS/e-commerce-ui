@@ -40,7 +40,7 @@ const ProductAddForm = () => {
           <Col sm="12" md="6">
             <Form.Group className="mb-3" controlId="productImage">
               <Form.Label>Image</Form.Label>
-              <Form.Control type="file" />
+              <Form.Control type="text" placeholder="Product Image Path" />
             </Form.Group>
           </Col>
         </Row>
