@@ -1,16 +1,15 @@
 import React from "react";
 import { Container } from "react-bootstrap";
-import LoginForm from "../../Components/LoginForm/LoginForm";
-
-const LoginPage = () => {
+import ProductAddForm from "../Components/ProductAddForm";
+const ProductAddPage = () => {
   return (
     <Container
       className="d-flex justify-content-center align-items-center"
       style={{ height: "100vh" }}
     >
-      <LoginForm />
+      <ProductAddForm />
     </Container>
   );
 };
 
-export default LoginPage;
+export default ProductAddPage;

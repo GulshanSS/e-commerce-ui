@@ -1,9 +1,13 @@
+import React from "react";
 import { Container } from "react-bootstrap";
 import RegisterForm from "../../Components/RegisterForm/RegisterForm";
 
 const RegisterPage = () => {
   return (
-    <Container className="d-flex justify-content-center align-items-center" style={{ height: "100vh" }}>
+    <Container
+      className="d-flex justify-content-center align-items-center"
+      style={{ height: "100vh" }}
+    >
       <RegisterForm />
     </Container>
   );

@@ -13,6 +13,7 @@ import { BiSearchAlt } from "react-icons/bi";
 
 import RegisterPage from "./Auth/Containers/RegisterPage/RegisterPage";
 import LoginPage from "./Auth/Containers/LoginPage/LoginPage";
+import ProductAddPage from "./ECommerce/Containers/ProductAddPage";
 
 const App = () => {
   return (
@@ -48,6 +49,7 @@ const App = () => {
           <Routes>
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
+            <Route path="/productAdd" element={<ProductAddPage />} />
           </Routes>
         </div>
       </Router>
