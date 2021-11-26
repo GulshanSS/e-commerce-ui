@@ -1,16 +1,70 @@
-import React from "react";
-import { Container, Row, Col, Button, Form } from "react-bootstrap";
+import React, { useState } from "react";
+import axios from "axios";
+import { Container, Row, Col, Button, Form, Spinner } from "react-bootstrap";
+import { ImCheckmark } from "react-icons/im";
 
 const ProductAddForm = () => {
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState("");
+  const [section, setSection] = useState("");
+  const [details, setDetails] = useState("");
+  const [image, setImage] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState({});
+  const [result, setResult] = useState("Add");
+
+  const clearText = () => {
+    setName("");
+    setPrice("");
+    setSection("");
+    setDetails("");
+    setImage("");
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      setLoading(true);
+      const config = {
+        "Content-Type": "application/json",
+      };
+      const { data } = await axios.post(
+        "https://ecommerce-robust-api.herokuapp.com/api/vendor/add",
+        {
+          name: name,
+          price: price,
+          section: section,
+          details: details,
+          img: image,
+        },
+        config
+      );
+      setResult(<ImCheckmark />);
+      setLoading(false);
+      setMessage({});
+    } catch (err) {
+      setLoading(false);
+      setResult("Add");
+      setMessage({ ...err.response.data });
+    }
+  };
   return (
     <Container>
       <h3 className="text-center">Add Product</h3>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <Row className="d-flex justify-content-center align-items-center">
           <Col sm="12" md="6">
             <Form.Group className="mb-3" controlId="productName">
               <Form.Label>Name</Form.Label>
-              <Form.Control type="text" placeholder="Product Name" />
+              <Form.Control
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Product Name"
+                isInvalid={!!message.name}
+              />
+              <Form.Control.Feedback type="invalid">
+                {message.name}
+              </Form.Control.Feedback>
             </Form.Group>
           </Col>
         </Row>
@@ -18,13 +72,31 @@ const ProductAddForm = () => {
           <Col sm="12" md="3">
             <Form.Group className="mb-3" controlId="productPrice">
               <Form.Label>Price</Form.Label>
-              <Form.Control type="text" placeholder="Product Price" />
+              <Form.Control
+                type="text"
+                value={price}
+                onChange={(e) => setPrice(e.target.value)}
+                placeholder="Product Price"
+                isInvalid={!!message.price}
+              />
+              <Form.Control.Feedback type="invalid">
+                {message.price}
+              </Form.Control.Feedback>
             </Form.Group>
           </Col>
           <Col sm="12" md="3">
             <Form.Group className="mb-3" controlId="productSection">
               <Form.Label>Section</Form.Label>
-              <Form.Control type="text" placeholder="Product Section" />
+              <Form.Control
+                type="text"
+                value={section}
+                onChange={(e) => setSection(e.target.value)}
+                placeholder="Product Section"
+                isInvalid={!!message.section}
+              />
+              <Form.Control.Feedback type="invalid">
+                {message.section}
+              </Form.Control.Feedback>
             </Form.Group>
           </Col>
         </Row>
@@ -32,7 +104,16 @@ const ProductAddForm = () => {
           <Col sm="12" md="6">
             <Form.Group className="mb-3" controlId="productDetails">
               <Form.Label>Details</Form.Label>
-              <Form.Control as="textarea" rows={2} />
+              <Form.Control
+                as="textarea"
+                value={details}
+                onChange={(e) => setDetails(e.target.value)}
+                rows={2}
+                isInvalid={!!message.details}
+              />
+              <Form.Control.Feedback type="invalid">
+                {message.details}
+              </Form.Control.Feedback>
             </Form.Group>
           </Col>
         </Row>
@@ -40,15 +121,38 @@ const ProductAddForm = () => {
           <Col sm="12" md="6">
             <Form.Group className="mb-3" controlId="productImage">
               <Form.Label>Image</Form.Label>
-              <Form.Control type="text" placeholder="Product Image Path" />
+              <Form.Control
+                type="text"
+                value={image}
+                onChange={(e) => setImage(e.target.value)}
+                placeholder="Product Image Path"
+              />
             </Form.Group>
           </Col>
         </Row>
+        <div className="d-flex justify-content-center align-items-center mb-2">
+          <Button
+            variant="success"
+            type="submit"
+            style={{ width: "120px", height: "50px" }}
+          >
+            {loading ? (
+              <Spinner animation="border" variant="success" />
+            ) : (
+              result
+            )}
+          </Button>
+        </div>
       </Form>
-      <div className="d-flex justify-content-center align-items-center">
-        <Button variant="success">Add</Button>
-        <Button variant="danger" className="ml-2">
-          Cancel
+      <div className=" d-flex justify-content-center align-items-center mb-2">
+        <Button
+          className="ml-2"
+          variant="danger"
+          type="submit"
+          onClick={clearText}
+          style={{ width: "120px", height: "50px" }}
+        >
+          Cancle
         </Button>
       </div>
     </Container>

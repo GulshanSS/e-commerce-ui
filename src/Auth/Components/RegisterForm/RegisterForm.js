@@ -221,7 +221,11 @@ const RegisterForm = () => {
             </Col>
           </Row>
           <div className="d-flex justify-content-center align-items-center">
-            <Button variant="success" type="submit" style={{ width:"120px", height: "50px" }}>
+            <Button
+              variant="success"
+              type="submit"
+              style={{ width: "120px", height: "50px" }}
+            >
               {loading ? (
                 <Spinner animation="border" variant="success" />
               ) : (
