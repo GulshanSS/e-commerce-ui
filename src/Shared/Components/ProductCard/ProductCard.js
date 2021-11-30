@@ -1,21 +1,25 @@
 import React from "react";
-import { BiLike, BiDislike } from "react-icons/bi";
-import { Card, Button, Row, Col } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import { Card, Row, Col } from "react-bootstrap";
 
-const ProductCard = () => {
+const ProductCard = ({ pId, pImg, pName, pDetails, pPrice }) => {
+  let navigate = useNavigate();
+  const handleProductDetails = () => {
+    navigate("/login");
+  };
   return (
-    <Card className="p-2 my-2">
+    <Card key={pId} onClick={handleProductDetails} className="p-2 my-2">
       <Row className="d-flex justify-content-center align-items-center">
         <Col xs="4">
-          <Card.Img variant="top" src="holder.js/100px180" />
+          <Card.Img variant="top" src={pImg} />
         </Col>
         <Col xs="8">
           <Row>
             <Card.Body>
-              <Card.Title>Card Title</Card.Title>
+              <Card.Title>{pName}</Card.Title>
+              <Card.Text>{pDetails}</Card.Text>
               <Card.Text>
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
+                <h2>{`Rs ${pPrice}/-`}</h2>
               </Card.Text>
             </Card.Body>
           </Row>

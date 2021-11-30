@@ -17,7 +17,7 @@ const LoginForm = () => {
         "Content-type": "application/json",
       };
       const { data } = await axios.post(
-        "http://localhost:5000/api/login",
+        "https://ecommerce-robust-api.herokuapp.com/api/login",
         {
           email,
           password,
@@ -30,7 +30,6 @@ const LoginForm = () => {
       setLoading(false);
     } catch (err) {
       setLoading(false);
-      console.log(err);
       setMessage({ ...err.response.data });
     }
   };
@@ -79,7 +78,11 @@ const LoginForm = () => {
             </Form.Group>
           </Row>
           <div className="d-flex justify-content-center align-items-center">
-          <Button variant="success" type="submit" style={{ width:"120px", height: "50px" }}>
+            <Button
+              variant="success"
+              type="submit"
+              style={{ width: "120px", height: "50px" }}
+            >
               {loading ? (
                 <Spinner animation="border" variant="success" />
               ) : (
