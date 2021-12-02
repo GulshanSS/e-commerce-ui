@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Container, Row, Col, Button, Form, Spinner } from "react-bootstrap";
 import { ImCheckmark } from "react-icons/im";
@@ -22,6 +22,22 @@ const ProductUpdateForm = () => {
     setDetails("");
     setImage("");
   };
+  useEffect(() => {
+    (async () => {
+      try {
+        const { data } = await axios.get(
+          `https://ecommerce-robust-api.herokuapp.com/api/${params.id}/details`
+        );
+        setName(data.name);
+        setPrice(data.price);
+        setSection(data.section);
+        setDetails(data.details);
+        setImage(data.img.path);
+      } catch (err) {
+        console.log(err);
+      }
+    })();
+  }, []);
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {

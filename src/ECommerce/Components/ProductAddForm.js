@@ -29,7 +29,6 @@ const ProductAddForm = () => {
         "Content-Type": "application/json",
         headers: authHeader(),
       };
-      console.log(image);
       const response = await axios.post(
         "https://ecommerce-robust-api.herokuapp.com/api/vendor/add",
         {
@@ -44,7 +43,6 @@ const ProductAddForm = () => {
       setLoading(false);
       setResult(<ImCheckmark />);
       setMessage({});
-      console.log(response);
     } catch (err) {
       setLoading(false);
       setResult("Add");
