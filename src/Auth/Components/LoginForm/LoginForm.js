@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { Container, Row, Form, Button, Spinner } from "react-bootstrap";
 
@@ -8,6 +9,7 @@ const LoginForm = () => {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState({});
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,6 +30,7 @@ const LoginForm = () => {
         localStorage.setItem("access_token", data.token);
       }
       setLoading(false);
+      navigate("/products");
     } catch (err) {
       setLoading(false);
       setMessage({ ...err.response.data });

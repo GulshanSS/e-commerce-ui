@@ -10,13 +10,16 @@ import {
 } from "react-bootstrap";
 import "./App.css";
 import { BiSearchAlt } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
 
 import RegisterPage from "./Auth/Containers/RegisterPage/RegisterPage";
 import LoginPage from "./Auth/Containers/LoginPage/LoginPage";
 import ProductAddPage from "./ECommerce/Containers/ProductAddPage";
 import ProductDisplayAllPage from "./Shared/Containers/ProductDisplayAllPage/ProductDisplayAllPage";
 import ProductDetailsPage from "./Shared/Containers/ProductDetailsPage/ProductDetailsPage";
-import TablePage from "./Shared/Containers/TablePage/TablePage"
+import TablePage from "./Shared/Containers/TablePage/TablePage";
+import UserDetailsPage from "./Shared/Containers/UserDetailsPage/UserDetailsPage";
+import Logout from "./Shared/Components/Logout/Logout";
 
 const App = () => {
   return (
@@ -45,7 +48,7 @@ const App = () => {
                 <Nav className="me-auto">
                   <Nav.Link href="/login">Login</Nav.Link>
                   <Nav.Link href="/register">Register</Nav.Link>
-                  <Nav.Link>Logout</Nav.Link>
+                  <Nav.Link href="/logout">Logout</Nav.Link>
                 </Nav>
               </Navbar.Collapse>
             </Container>
@@ -57,6 +60,8 @@ const App = () => {
             <Route path="/products" element={<ProductDisplayAllPage />} />
             <Route path="/product/:id" element={<ProductDetailsPage />} />
             <Route path="/table" element={<TablePage />} />
+            <Route path="/user" element={<UserDetailsPage />} />
+            <Route path="/logout" element={<Logout />} />
           </Routes>
         </div>
       </Router>

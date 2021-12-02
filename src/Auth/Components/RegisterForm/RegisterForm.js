@@ -3,6 +3,7 @@ import axios from "axios";
 import "./RegisterForm.css";
 import { ImCheckmark } from "react-icons/im";
 import { Col, Container, Row, Form, Button, Spinner } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 const RegisterForm = () => {
   const [name, setName] = useState("");
@@ -17,6 +18,7 @@ const RegisterForm = () => {
   const [message, setMessage] = useState({});
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState("Register");
+  const navigate = useNavigate();
   let cpasserr = {};
   const checkPasswords = (pass, cpass) => {
     if (pass != cpass) {
@@ -48,6 +50,7 @@ const RegisterForm = () => {
       setResult(<ImCheckmark />);
       setLoading(false);
       setMessage({});
+      navigate("/login");
     } catch (err) {
       setLoading(false);
       setResult("Register");
