@@ -30,7 +30,7 @@ const LoginForm = () => {
         localStorage.setItem("access_token", data.token);
       }
       setLoading(false);
-      navigate("/products");
+      navigate("/user");
     } catch (err) {
       setLoading(false);
       setMessage({ ...err.response.data });

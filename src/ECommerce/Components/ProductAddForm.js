@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Container, Row, Col, Button, Form, Spinner } from "react-bootstrap";
 import { ImCheckmark } from "react-icons/im";
+import authHeader from "../../utils/authHeader";
 
 const ProductAddForm = () => {
   const [name, setName] = useState("");
@@ -26,21 +27,24 @@ const ProductAddForm = () => {
       setLoading(true);
       const config = {
         "Content-Type": "application/json",
+        headers: authHeader(),
       };
-      const { data } = await axios.post(
+      console.log(image);
+      const response = await axios.post(
         "https://ecommerce-robust-api.herokuapp.com/api/vendor/add",
         {
           name: name,
           price: price,
           section: section,
           details: details,
-          img: image,
+          image: image === "" ? undefined : image,
         },
         config
       );
-      setResult(<ImCheckmark />);
       setLoading(false);
+      setResult(<ImCheckmark />);
       setMessage({});
+      console.log(response);
     } catch (err) {
       setLoading(false);
       setResult("Add");
@@ -130,7 +134,7 @@ const ProductAddForm = () => {
             </Form.Group>
           </Col>
         </Row>
-        <div className="d-flex justify-content-center align-items-center mb-2">
+        <Row className="d-flex justify-content-center">
           <Button
             variant="success"
             type="submit"
@@ -142,19 +146,17 @@ const ProductAddForm = () => {
               result
             )}
           </Button>
-        </div>
+          <Button
+            className="ml-2"
+            variant="danger"
+            type="reset"
+            onClick={clearText}
+            style={{ width: "120px", height: "50px" }}
+          >
+            Cancle
+          </Button>
+        </Row>
       </Form>
-      <div className=" d-flex justify-content-center align-items-center mb-2">
-        <Button
-          className="ml-2"
-          variant="danger"
-          type="submit"
-          onClick={clearText}
-          style={{ width: "120px", height: "50px" }}
-        >
-          Cancle
-        </Button>
-      </div>
     </Container>
   );
 };
