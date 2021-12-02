@@ -5,7 +5,7 @@ import { Card, Row, Col } from "react-bootstrap";
 const ProductCard = ({ pId, pImg, pName, pDetails, pPrice }) => {
   let navigate = useNavigate();
   const handleProductDetails = () => {
-    navigate("/login");
+    navigate(`/product/${pId}`);
   };
   return (
     <Card key={pId} onClick={handleProductDetails} className="p-2 my-2">

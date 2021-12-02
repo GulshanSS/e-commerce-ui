@@ -45,6 +45,7 @@ const App = () => {
                 <Nav className="me-auto">
                   <Nav.Link href="/login">Login</Nav.Link>
                   <Nav.Link href="/register">Register</Nav.Link>
+                  <Nav.Link>Logout</Nav.Link>
                 </Nav>
               </Navbar.Collapse>
             </Container>
@@ -54,7 +55,7 @@ const App = () => {
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/productAdd" element={<ProductAddPage />} />
             <Route path="/products" element={<ProductDisplayAllPage />} />
-            <Route path="/product/specific" element={<ProductDetailsPage />} />
+            <Route path="/product/:id" element={<ProductDetailsPage />} />
             <Route path="/table" element={<TablePage />} />
           </Routes>
         </div>
