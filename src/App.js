@@ -15,6 +15,7 @@ import { useNavigate } from "react-router-dom";
 import RegisterPage from "./Auth/Containers/RegisterPage/RegisterPage";
 import LoginPage from "./Auth/Containers/LoginPage/LoginPage";
 import ProductAddPage from "./ECommerce/Containers/ProductAddPage";
+import ProductUpdatePage from "./ECommerce/Containers/ProductUpdatePage";
 import ProductDisplayAllPage from "./Shared/Containers/ProductDisplayAllPage/ProductDisplayAllPage";
 import ProductDetailsPage from "./Shared/Containers/ProductDetailsPage/ProductDetailsPage";
 import TablePage from "./Shared/Containers/TablePage/TablePage";
@@ -57,6 +58,7 @@ const App = () => {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/productAdd" element={<ProductAddPage />} />
+            <Route path="/productUpdate" element={<ProductUpdatePage />} />
             <Route path="/products" element={<ProductDisplayAllPage />} />
             <Route path="/product/:id" element={<ProductDetailsPage />} />
             <Route path="/table" element={<TablePage />} />
