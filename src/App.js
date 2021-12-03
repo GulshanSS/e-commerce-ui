@@ -22,7 +22,7 @@ import UserDetailsPage from "./Shared/Containers/UserDetailsPage/UserDetailsPage
 import Logout from "./Shared/Components/Logout/Logout";
 import AddToCartPage from "./ECommerce/Containers/AddToCartPage";
 import MyOrdersPage from "./ECommerce/Containers/MyOrdersPage";
-
+import AdminTablePage from "./ECommerce/Containers/AdminTablePage";
 const App = () => {
   return (
     <>
@@ -67,6 +67,7 @@ const App = () => {
             <Route path="/user" element={<UserDetailsPage />} />
             <Route path="/cart" element={<AddToCartPage />} />
             <Route path="/logout" element={<Logout />} />
+            <Route path="/admintable" element={<AdminTablePage />} />
           </Routes>
         </div>
       </Router>
