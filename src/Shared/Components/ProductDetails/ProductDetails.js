@@ -1,8 +1,49 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { Col, Container, Row, Button } from "react-bootstrap";
 import { BiLike, BiDislike } from "react-icons/bi";
+import decodeToken from "../../../utils/decodeToken";
+import authHeader from "../../../utils/authHeader";
+import { useNavigate } from "react-router";
 
-const ProductDetails = ({ pId, pName, pDetails, pImg, pPrice, pLikes }) => {
+const ProductDetails = ({
+  pId,
+  pName,
+  pDetails,
+  pImg,
+  pPrice,
+  pLikes,
+  uLikes,
+}) => {
+  const navigate = useNavigate();
+  const config = {
+    "Content-Type": "application/json",
+    headers: authHeader(),
+  };
+  const handleAddToCart = async () => {
+    try {
+      const { data } = await axios.post(
+        `https://ecommerce-robust-api.herokuapp.com/api/customer/${pId}/addToCart`,
+        {},
+        config
+      );
+      navigate("/cart");
+    } catch (err) {
+      console.log(err.response);
+    }
+  };
+  const postLike = async () => {
+    try {
+      const { data } = await axios.post(
+        `https://ecommerce-robust-api.herokuapp.com/api/customer/${pId}/like`,
+        {},
+        config
+      );
+      window.location.reload();
+    } catch (err) {
+      console.log(err.response);
+    }
+  };
   return (
     <Container>
       <Row className="d-flex justify-content-center align-items-center">
@@ -19,21 +60,27 @@ const ProductDetails = ({ pId, pName, pDetails, pImg, pPrice, pLikes }) => {
           </Row>
           <Row>
             <Col className="d-flex justify-content-start">
-              <Button variant="danger">Add to Cart</Button>
+              <Button variant="danger" onClick={handleAddToCart}>
+                Add to Cart
+              </Button>
               <Button className="ml-2" variant="warning">
                 Buy Now
               </Button>
             </Col>
             <Col className="d-flex justify-content-end">
               <div className="m-2">
-                <span>{pLikes} likes</span>
+                <Button
+                  onClick={postLike}
+                  variant={uLikes ? "success" : "primary"}
+                >
+                  {pLikes} likes{" "}
+                  {uLikes ? (
+                    <BiDislike fontSize="24px" />
+                  ) : (
+                    <BiLike fontSize="24px" />
+                  )}
+                </Button>
               </div>
-              <Button className="mr-2">
-                <BiLike />
-              </Button>
-              <Button>
-                <BiDislike />
-              </Button>
             </Col>
           </Row>
         </Col>

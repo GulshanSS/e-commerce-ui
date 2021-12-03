@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Container, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
+import decodeToken from "../../../utils/decodeToken";
 import ProductDetails from "../../Components/ProductDetails/ProductDetails";
 
 const initialState = {
@@ -14,6 +15,7 @@ const initialState = {
   },
   likes: {
     count: 0,
+    users: [],
   },
 };
 
@@ -36,6 +38,7 @@ const ProductDetailsPage = () => {
           },
           likes: {
             count: data.likes.count,
+            users: data.likes.users,
           },
         });
       } catch (err) {
@@ -55,6 +58,11 @@ const ProductDetailsPage = () => {
         pPrice={product.price}
         pImg={product.img.path}
         pLikes={product.likes.count}
+        uLikes={
+          typeof product.likes.users.find(
+            (ele) => ele.toString() === decodeToken().id.toString()
+          ) != "undefined"
+        }
       />
     </Container>
   );

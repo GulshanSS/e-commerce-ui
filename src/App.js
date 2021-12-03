@@ -21,6 +21,7 @@ import ProductDetailsPage from "./Shared/Containers/ProductDetailsPage/ProductDe
 import TablePage from "./Shared/Containers/TablePage/TablePage";
 import UserDetailsPage from "./Shared/Containers/UserDetailsPage/UserDetailsPage";
 import Logout from "./Shared/Components/Logout/Logout";
+import AddToCartPage from "./ECommerce/Containers/AddToCartPage";
 
 const App = () => {
   return (
@@ -63,6 +64,7 @@ const App = () => {
             <Route path="/product/:id" element={<ProductDetailsPage />} />
             <Route path="/table" element={<TablePage />} />
             <Route path="/user" element={<UserDetailsPage />} />
+            <Route path="/cart" element={<AddToCartPage/>} />
             <Route path="/logout" element={<Logout />} />
           </Routes>
         </div>
@@ -71,4 +73,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default App; 
