@@ -10,7 +10,6 @@ import {
 } from "react-bootstrap";
 import "./App.css";
 import { BiSearchAlt } from "react-icons/bi";
-import { useNavigate } from "react-router-dom";
 
 import RegisterPage from "./Auth/Containers/RegisterPage/RegisterPage";
 import LoginPage from "./Auth/Containers/LoginPage/LoginPage";
@@ -22,6 +21,7 @@ import TablePage from "./Shared/Containers/TablePage/TablePage";
 import UserDetailsPage from "./Shared/Containers/UserDetailsPage/UserDetailsPage";
 import Logout from "./Shared/Components/Logout/Logout";
 import AddToCartPage from "./ECommerce/Containers/AddToCartPage";
+import MyOrdersPage from "./ECommerce/Containers/MyOrdersPage";
 
 const App = () => {
   return (
@@ -60,11 +60,12 @@ const App = () => {
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/productAdd" element={<ProductAddPage />} />
             <Route path="/productUpdate/:id" element={<ProductUpdatePage />} />
+            <Route path="/myorders" element={<MyOrdersPage />} />
             <Route path="/products" element={<ProductDisplayAllPage />} />
             <Route path="/product/:id" element={<ProductDetailsPage />} />
             <Route path="/table" element={<TablePage />} />
             <Route path="/user" element={<UserDetailsPage />} />
-            <Route path="/cart" element={<AddToCartPage/>} />
+            <Route path="/cart" element={<AddToCartPage />} />
             <Route path="/logout" element={<Logout />} />
           </Routes>
         </div>
@@ -73,4 +74,4 @@ const App = () => {
   );
 };
 
-export default App; 
+export default App;

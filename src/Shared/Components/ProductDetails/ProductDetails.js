@@ -20,6 +20,18 @@ const ProductDetails = ({
     "Content-Type": "application/json",
     headers: authHeader(),
   };
+  const handleBuyNow = async () => {
+    try {
+      const { data } = await axios.post(
+        `https://ecommerce-robust-api.herokuapp.com/api/customer/${pId}/buyNow`,
+        {},
+        config
+      );
+      navigate("/myorders");
+    } catch (err) {
+      console.log(err);
+    }
+  };
   const handleAddToCart = async () => {
     try {
       const { data } = await axios.post(
@@ -48,7 +60,7 @@ const ProductDetails = ({
     <Container>
       <Row className="d-flex justify-content-center align-items-center">
         <Col sm="12" md="4">
-          <img src={pImg} style={{ maxWidth: "300px" }} />
+          <img src={pImg} style={{ maxWidth: "300px" }} alt="" />
         </Col>
         <Col sm="12" md="8">
           <Row>
@@ -63,7 +75,7 @@ const ProductDetails = ({
               <Button variant="danger" onClick={handleAddToCart}>
                 Add to Cart
               </Button>
-              <Button className="ml-2" variant="warning">
+              <Button className="ml-2" variant="warning" onClick={handleBuyNow}>
                 Buy Now
               </Button>
             </Col>
