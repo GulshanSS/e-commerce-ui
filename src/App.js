@@ -25,6 +25,8 @@ import MyOrdersPage from "./ECommerce/Containers/MyOrdersPage";
 import AdminTablePage from "./ECommerce/Containers/AdminTablePage";
 import PasswordResetPage from "./Shared/Containers/PasswordResetPage/PasswordResetPage";
 import EmailVerifyPage from "./Shared/Containers/EmailVerifyPage/EmailVerifyPage";
+import SendMailPage from "./Auth/Containers/SendMailPage/SendMailPage";
+import ForgotPasswordPage from "./Auth/Containers/ForgotPasswordPage/ForgotPasswordPage"
 const App = () => {
   return (
     <>
@@ -72,6 +74,8 @@ const App = () => {
             <Route path="/reset-password" element={<PasswordResetPage />} />
             <Route path="/logout" element={<Logout />} />
             <Route path="/emailVerify/:id/:token" element={<EmailVerifyPage/>} />
+            <Route path="/sendmail" element={<SendMailPage/>} />
+            <Route path="/forgot-password" element={<ForgotPasswordPage/>} />
           </Routes>
         </div>
       </Router>
