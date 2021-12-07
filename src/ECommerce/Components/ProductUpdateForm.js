@@ -158,7 +158,7 @@ const ProductUpdateForm = () => {
             style={{ width: "120px", height: "50px" }}
           >
             {loading ? (
-              <Spinner animation="border" variant="success" />
+              <Spinner animation="border" variant="dark" />
             ) : (
               result
             )}

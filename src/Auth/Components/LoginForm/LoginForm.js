@@ -87,13 +87,18 @@ const LoginForm = () => {
               style={{ width: "120px", height: "50px" }}
             >
               {loading ? (
-                <Spinner animation="border" variant="success" />
+                <Spinner animation="border" variant="dark" />
               ) : (
                 "login"
               )}
             </Button>
           </div>
         </Form>
+        <div className="d-flex justify-content-center align-items-center mt-3">
+          <a href="/sendmail">
+            Forgot Password?
+          </a>
+        </div>
       </Container>
     </>
   );

@@ -83,7 +83,7 @@ const ProductDetails = ({
               <div className="m-2">
                 <Button
                   onClick={postLike}
-                  variant={uLikes ? "success" : "primary"}
+                  variant={uLikes ? "dark" : "primary"}
                 >
                   {pLikes} likes{" "}
                   {uLikes ? (

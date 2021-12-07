@@ -75,7 +75,7 @@ const App = () => {
             <Route path="/logout" element={<Logout />} />
             <Route path="/emailVerify/:id/:token" element={<EmailVerifyPage/>} />
             <Route path="/sendmail" element={<SendMailPage/>} />
-            <Route path="/forgot-password" element={<ForgotPasswordPage/>} />
+            <Route path="/forgotPassword/:id/:token" element={<ForgotPasswordPage/>} />
           </Routes>
         </div>
       </Router>
