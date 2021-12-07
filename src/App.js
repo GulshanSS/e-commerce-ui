@@ -23,6 +23,7 @@ import Logout from "./Shared/Components/Logout/Logout";
 import AddToCartPage from "./ECommerce/Containers/AddToCartPage";
 import MyOrdersPage from "./ECommerce/Containers/MyOrdersPage";
 import AdminTablePage from "./ECommerce/Containers/AdminTablePage";
+import PasswordResetPage from "./Shared/Containers/PasswordResetPage/PasswordResetPage";
 const App = () => {
   return (
     <>
@@ -66,8 +67,9 @@ const App = () => {
             <Route path="/table" element={<TablePage />} />
             <Route path="/user" element={<UserDetailsPage />} />
             <Route path="/cart" element={<AddToCartPage />} />
-            <Route path="/logout" element={<Logout />} />
             <Route path="/admintable" element={<AdminTablePage />} />
+            <Route path="/reset-password" element={<PasswordResetPage />} />
+            <Route path="/logout" element={<Logout />} />
           </Routes>
         </div>
       </Router>
